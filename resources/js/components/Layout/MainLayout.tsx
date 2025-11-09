@@ -1,23 +1,30 @@
 import { SearchBar } from '@/components/SearchBar';
 import { Button } from '@/components/ui/button';
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import type { SharedData } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { motion } from 'framer-motion';
-import { ChevronDown, LayoutDashboard, LogOut, Palette, User } from 'lucide-react';
+import { LayoutDashboard, Palette } from 'lucide-react';
 import { ReactNode } from 'react';
 
 interface MainLayoutProps {
     children: ReactNode;
     title?: string;
 }
+
+const getDashboardUrl = (role: string): string => {
+    switch (role) {
+        case 'admin':
+            return '/admin';
+        case 'artist':
+            return '/artist';
+        case 'curator':
+            return '/curator';
+        case 'gallery':
+            return '/gallery';
+        default:
+            return '/auth';
+    }
+};
 
 export default function MainLayout({ children, title }: MainLayoutProps) {
     const { auth } = usePage<SharedData>().props;
@@ -40,54 +47,18 @@ export default function MainLayout({ children, title }: MainLayoutProps) {
                                 <SearchBar />
                             </div>
 
-                            {auth.user ? (
-                                <DropdownMenu>
-                                    <DropdownMenuTrigger asChild>
-                                        <Button variant="outline" className="flex items-center gap-2">
-                                            {auth.user.avatar ? (
-                                                <img src={auth.user.avatar} alt={auth.user.name} className="h-6 w-6 rounded-full" />
-                                            ) : (
-                                                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-zinc-200 text-xs font-semibold dark:bg-zinc-700">
-                                                    {auth.user.name.charAt(0).toUpperCase()}
-                                                </div>
-                                            )}
-                                            <span className="hidden sm:inline">{auth.user.name}</span>
-                                            <ChevronDown className="h-4 w-4" />
-                                        </Button>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent align="end" className="w-56">
-                                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                                        <DropdownMenuSeparator />
-                                        <DropdownMenuItem asChild>
-                                            <a href="/admin" className="flex cursor-pointer items-center">
-                                                <LayoutDashboard className="mr-2 h-4 w-4" />
-                                                Dashboard
-                                            </a>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem asChild>
-                                            <a href="/profile" className="flex cursor-pointer items-center">
-                                                <User className="mr-2 h-4 w-4" />
-                                                Profile
-                                            </a>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuSeparator />
-                                        <DropdownMenuItem asChild>
-                                            <form method="POST" action="/admin/logout" className="w-full">
-                                                <button type="submit" className="flex w-full cursor-pointer items-center">
-                                                    <LogOut className="mr-2 h-4 w-4" />
-                                                    Logout
-                                                </button>
-                                            </form>
-                                        </DropdownMenuItem>
-                                    </DropdownMenuContent>
-                                </DropdownMenu>
-                            ) : (
-                                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="shrink-0">
-                                    <Button variant="outline" asChild>
+                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="shrink-0">
+                                <Button variant="outline" asChild>
+                                    {auth.user ? (
+                                        <a href={getDashboardUrl(auth.user.role)} className="flex items-center gap-2">
+                                            <LayoutDashboard className="h-4 w-4" />
+                                            Dashboard
+                                        </a>
+                                    ) : (
                                         <a href="/auth">Sign In</a>
-                                    </Button>
-                                </motion.div>
-                            )}
+                                    )}
+                                </Button>
+                            </motion.div>
                         </div>
 
                         <div className="pb-4 md:hidden">

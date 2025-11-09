@@ -13,6 +13,7 @@ export interface User {
     id: number;
     name: string;
     email: string;
+    role: 'admin' | 'artist' | 'curator' | 'gallery' | 'user';
     avatar?: string;
     bio?: string;
     email_verified_at: string | null;
