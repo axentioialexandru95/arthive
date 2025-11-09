@@ -1,10 +1,10 @@
-import MainLayout from '@/components/Layout/MainLayout';
-import { FilterTabs } from '@/components/Search/FilterTabs';
 import ArtistCard from '@/components/Cards/ArtistCard';
 import CuratorCard from '@/components/Cards/CuratorCard';
 import GalleryCard from '@/components/Cards/GalleryCard';
-import { Search, Palette, Sparkles, Building2 } from 'lucide-react';
+import MainLayout from '@/components/Layout/MainLayout';
+import { FilterTabs } from '@/components/Search/FilterTabs';
 import { motion } from 'framer-motion';
+import { Building2, Palette, Search, Sparkles } from 'lucide-react';
 
 interface SearchResult {
     id: number;
@@ -37,11 +37,7 @@ const staggerContainer = {
 };
 
 export default function Index({ results, query, type }: SearchIndexProps) {
-    const allResults: SearchResult[] = [
-        ...(results.artists?.data || []),
-        ...(results.curators?.data || []),
-        ...(results.galleries?.data || []),
-    ];
+    const allResults: SearchResult[] = [...(results.artists?.data || []), ...(results.curators?.data || []), ...(results.galleries?.data || [])];
 
     const totalCount = allResults.length;
     const hasNoResults = totalCount === 0 && query;
@@ -77,9 +73,7 @@ export default function Index({ results, query, type }: SearchIndexProps) {
                     {/* Search Header */}
                     {query && (
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }} className="mb-6">
-                            <h1 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50 mb-1">
-                                Search results for "{query}"
-                            </h1>
+                            <h1 className="mb-1 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">Search results for "{query}"</h1>
                             <p className="text-sm text-zinc-500 dark:text-zinc-400">
                                 {totalCount} {totalCount === 1 ? 'result' : 'results'}
                             </p>
@@ -96,17 +90,25 @@ export default function Index({ results, query, type }: SearchIndexProps) {
                     {/* Results */}
                     <div className="pb-8">
                         {hasNoResults ? (
-                            <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.3 }} className="flex flex-col items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50/50 py-16 text-center dark:border-zinc-800 dark:bg-zinc-900/30">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.98 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.3 }}
+                                className="flex flex-col items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50/50 py-16 text-center dark:border-zinc-800 dark:bg-zinc-900/30"
+                            >
                                 <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800">
                                     <Search className="h-8 w-8 text-zinc-400 dark:text-zinc-500" />
                                 </div>
                                 <h2 className="mb-2 text-xl font-semibold text-zinc-900 dark:text-zinc-50">No results found</h2>
-                                <p className="max-w-sm text-sm text-zinc-600 dark:text-zinc-400">
-                                    Try different keywords or check your spelling.
-                                </p>
+                                <p className="max-w-sm text-sm text-zinc-600 dark:text-zinc-400">Try different keywords or check your spelling.</p>
                             </motion.div>
                         ) : !query ? (
-                            <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.3 }} className="flex flex-col items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50/50 py-16 text-center dark:border-zinc-800 dark:bg-zinc-900/30">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.98 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.3 }}
+                                className="flex flex-col items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50/50 py-16 text-center dark:border-zinc-800 dark:bg-zinc-900/30"
+                            >
                                 <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30">
                                     <Search className="h-8 w-8 text-purple-600 dark:text-purple-400" />
                                 </div>
@@ -116,7 +118,12 @@ export default function Index({ results, query, type }: SearchIndexProps) {
                                 </p>
                             </motion.div>
                         ) : (
-                            <motion.div initial="initial" animate="animate" variants={staggerContainer} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                            <motion.div
+                                initial="initial"
+                                animate="animate"
+                                variants={staggerContainer}
+                                className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+                            >
                                 {allResults.map((result) => {
                                     const typeConfig = getTypeConfig(result.type);
                                     const Icon = typeConfig.icon;
@@ -124,7 +131,9 @@ export default function Index({ results, query, type }: SearchIndexProps) {
                                     return (
                                         <motion.div key={`${result.type}-${result.id}`} variants={fadeInUp} className="relative">
                                             <div className="absolute -top-2 -right-2 z-10">
-                                                <div className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${typeConfig.bg} ${typeConfig.color}`}>
+                                                <div
+                                                    className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${typeConfig.bg} ${typeConfig.color}`}
+                                                >
                                                     <Icon className="h-3 w-3" />
                                                     {typeConfig.label}
                                                 </div>

@@ -107,7 +107,7 @@ export function SearchBar() {
     };
 
     return (
-        <div ref={searchRef} className="relative m-auto w-1/2 max-w-2xl">
+        <div ref={searchRef} className="relative mx-auto w-full max-w-2xl">
             <form onSubmit={handleSubmit} className="relative">
                 <div className="relative">
                     <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-zinc-400" />
@@ -116,8 +116,8 @@ export function SearchBar() {
                         type="text"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
-                        placeholder="Search artists, curators, galleries..."
-                        className="m-auto w-full rounded-lg border border-zinc-200 bg-white py-2 pr-10 pl-10 text-sm transition-all focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 focus:outline-none dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-purple-400"
+                        placeholder="Search..."
+                        className="w-full rounded-lg border border-zinc-200 bg-white py-2 pr-10 pl-10 text-sm transition-all focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 focus:outline-none dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-purple-400"
                     />
                     {query && (
                         <button

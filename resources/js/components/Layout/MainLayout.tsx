@@ -40,34 +40,33 @@ export default function MainLayout({ children, title }: MainLayoutProps) {
                     className="sticky top-0 z-50 border-b border-zinc-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:border-zinc-800 dark:bg-zinc-950/95 dark:supports-[backdrop-filter]:bg-zinc-950/60"
                 >
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <div className="flex h-16 items-center justify-between gap-4">
+                        <div className="flex h-16 items-center justify-between gap-2 sm:gap-3">
                             <Link href="/" className="flex shrink-0 items-center gap-2">
-                                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-900 text-white dark:bg-zinc-50 dark:text-zinc-900">
-                                    <Palette className="h-6 w-6" />
+                                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-900 text-white sm:h-10 sm:w-10 dark:bg-zinc-50 dark:text-zinc-900">
+                                    <Palette className="h-5 w-5 sm:h-6 sm:w-6" />
                                 </div>
                                 <span className="hidden text-xl font-bold text-zinc-900 sm:inline dark:text-zinc-50">ArtHive</span>
                             </Link>
 
-                            <div className="hidden flex-1 md:block">
+                            <div className="flex-1">
                                 <SearchBar />
                             </div>
 
                             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="shrink-0">
-                                <Button variant="outline" asChild>
+                                <Button variant="outline" asChild size="sm" className="h-9 w-9 p-0 sm:h-auto sm:w-auto sm:px-4">
                                     {auth.user ? (
-                                        <a href={getDashboardUrl(auth.user.role)} className="flex items-center gap-2">
+                                        <a href={getDashboardUrl(auth.user.role)} className="flex items-center justify-center gap-2">
                                             <LayoutDashboard className="h-4 w-4" />
-                                            Dashboard
+                                            <span className="hidden sm:inline">Dashboard</span>
                                         </a>
                                     ) : (
-                                        <a href="/auth">Sign In</a>
+                                        <a href="/auth" className="flex items-center justify-center">
+                                            <span className="hidden sm:inline">Sign In</span>
+                                            <LayoutDashboard className="h-4 w-4 sm:hidden" />
+                                        </a>
                                     )}
                                 </Button>
                             </motion.div>
-                        </div>
-
-                        <div className="pb-4 md:hidden">
-                            <SearchBar />
                         </div>
                     </div>
                 </motion.header>

@@ -1,12 +1,12 @@
+import { ArtistsShowcase } from '@/components/landing/ArtistsShowcase';
 import { CTASection } from '@/components/landing/CTASection';
 import { Features } from '@/components/landing/Features';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { Hero } from '@/components/landing/Hero';
 import { RolesSection } from '@/components/landing/RolesSection';
-import { ArtistsShowcase } from '@/components/landing/ArtistsShowcase';
-import { Head } from '@inertiajs/react';
 import type { Artist } from '@/types/models';
+import { Head } from '@inertiajs/react';
 
 interface WelcomeProps {
     artists: Artist[];

@@ -1,7 +1,7 @@
-import type { Gallery, PaginatedData } from "@/types";
-import MainLayout from "@/Components/Layout/MainLayout";
-import GalleryCard from "@/Components/Cards/GalleryCard";
-import Pagination from "@/Components/ui/Pagination";
+import GalleryCard from '@/components/Cards/GalleryCard';
+import MainLayout from '@/components/Layout/MainLayout';
+import Pagination from '@/components/ui/Pagination';
+import type { Gallery, PaginatedData } from '@/types';
 
 interface GalleriesIndexProps {
     galleries: PaginatedData<Gallery>;

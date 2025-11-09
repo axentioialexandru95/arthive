@@ -27,16 +27,14 @@ export function FilterTabs({ currentType, query }: FilterTabsProps) {
                     <button
                         key={tab.value}
                         onClick={() => handleTabClick(tab.value)}
-                        className={`relative whitespace-nowrap px-1 py-3 text-sm font-medium transition-colors ${
+                        className={`relative px-1 py-3 text-sm font-medium whitespace-nowrap transition-colors ${
                             currentType === tab.value
                                 ? 'text-zinc-900 dark:text-zinc-50'
                                 : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100'
                         }`}
                     >
                         {tab.label}
-                        {currentType === tab.value && (
-                            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-zinc-900 dark:bg-zinc-50" />
-                        )}
+                        {currentType === tab.value && <div className="absolute right-0 bottom-0 left-0 h-0.5 bg-zinc-900 dark:bg-zinc-50" />}
                     </button>
                 ))}
             </div>

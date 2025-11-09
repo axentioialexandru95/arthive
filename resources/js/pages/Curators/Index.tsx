@@ -1,7 +1,7 @@
-import type { Curator, PaginatedData } from "@/types";
-import MainLayout from "@/Components/Layout/MainLayout";
-import CuratorCard from "@/Components/Cards/CuratorCard";
-import Pagination from "@/Components/ui/Pagination";
+import CuratorCard from '@/components/Cards/CuratorCard';
+import MainLayout from '@/components/Layout/MainLayout';
+import Pagination from '@/components/ui/Pagination';
+import type { Curator, PaginatedData } from '@/types';
 
 interface CuratorsIndexProps {
     curators: PaginatedData<Curator>;

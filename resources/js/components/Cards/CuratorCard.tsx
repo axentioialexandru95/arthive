@@ -1,6 +1,6 @@
-import { Link } from "@inertiajs/react";
-import type { Curator } from "@/types";
-import { MapPin, Sparkles } from "lucide-react";
+import type { Curator } from '@/types';
+import { Link } from '@inertiajs/react';
+import { MapPin, Sparkles } from 'lucide-react';
 
 interface CuratorCardProps {
     curator: Curator;
@@ -9,7 +9,7 @@ interface CuratorCardProps {
 export default function CuratorCard({ curator }: CuratorCardProps) {
     return (
         <Link href={`/curators/${curator.id}`}>
-            <div className="group relative overflow-hidden rounded-xl border border-zinc-200 bg-white p-5 transition-all hover:shadow-xl hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700 h-full">
+            <div className="group relative h-full overflow-hidden rounded-xl border border-zinc-200 bg-white p-5 transition-all hover:border-zinc-300 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700">
                 <div className="flex items-start gap-4">
                     <div className="relative flex-shrink-0">
                         <div className="h-16 w-16 overflow-hidden rounded-full bg-gradient-to-br from-blue-100 to-cyan-100 ring-2 ring-blue-100 dark:from-blue-900/30 dark:to-cyan-900/30 dark:ring-blue-900/50">
@@ -24,16 +24,12 @@ export default function CuratorCard({ curator }: CuratorCardProps) {
                     </div>
 
                     <div className="min-w-0 flex-1">
-                        <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        <h3 className="mb-1 text-lg font-semibold text-zinc-900 transition-colors group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400">
                             {curator.user.name}
                         </h3>
-                        {curator.experience && (
-                            <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-3">
-                                {curator.experience}
-                            </p>
-                        )}
+                        {curator.experience && <p className="mb-3 text-sm text-zinc-600 dark:text-zinc-400">{curator.experience}</p>}
 
-                        <div className="flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400 mb-3">
+                        <div className="mb-3 flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400">
                             <div className="flex items-center gap-1">
                                 <Sparkles className="h-3.5 w-3.5" />
                                 <span className="font-semibold text-zinc-900 dark:text-zinc-50">{curator.exhibitions_count}</span>

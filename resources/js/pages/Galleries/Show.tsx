@@ -1,10 +1,9 @@
-import type { Gallery } from '@/types';
+import SpaceCard from '@/components/Cards/SpaceCard';
 import MainLayout from '@/components/Layout/MainLayout';
 import FollowButton from '@/components/Profile/FollowButton';
-import SpaceCard from '@/components/Cards/SpaceCard';
+import type { Gallery, SharedData } from '@/types';
 import { usePage } from '@inertiajs/react';
-import type { SharedData } from '@/types';
-import { MapPin, Star, Building2, Calendar } from 'lucide-react';
+import { Building2, Calendar, MapPin, Star } from 'lucide-react';
 import { useState } from 'react';
 
 interface GalleryShowProps {
@@ -59,7 +58,9 @@ export default function Show({ gallery }: GalleryShowProps) {
                                             {[...Array(fullStars)].map((_, i) => (
                                                 <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                                             ))}
-                                            {hasHalfStar && <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" style={{ clipPath: 'inset(0 50% 0 0)' }} />}
+                                            {hasHalfStar && (
+                                                <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" style={{ clipPath: 'inset(0 50% 0 0)' }} />
+                                            )}
                                             {[...Array(5 - fullStars - (hasHalfStar ? 1 : 0))].map((_, i) => (
                                                 <Star key={`empty-${i}`} className="h-4 w-4 text-zinc-300 dark:text-zinc-600" />
                                             ))}
@@ -70,7 +71,12 @@ export default function Show({ gallery }: GalleryShowProps) {
                             </div>
 
                             {auth.user && gallery.is_followed_by_auth !== null && (
-                                <FollowButton following_id={gallery.id} following_type="gallery" is_following={gallery.is_followed_by_auth} size="lg" />
+                                <FollowButton
+                                    following_id={gallery.id}
+                                    following_type="gallery"
+                                    is_following={gallery.is_followed_by_auth}
+                                    size="lg"
+                                />
                             )}
                         </div>
                     </div>
@@ -175,7 +181,9 @@ export default function Show({ gallery }: GalleryShowProps) {
                                     <div>
                                         <h3 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
                                             Available Spaces
-                                            <span className="ml-2 text-sm font-normal text-emerald-600 dark:text-emerald-400">({availableSpaces.length})</span>
+                                            <span className="ml-2 text-sm font-normal text-emerald-600 dark:text-emerald-400">
+                                                ({availableSpaces.length})
+                                            </span>
                                         </h3>
                                         <div className="grid gap-6 sm:grid-cols-2">
                                             {availableSpaces.map((space) => (
@@ -189,7 +197,9 @@ export default function Show({ gallery }: GalleryShowProps) {
                                     <div>
                                         <h3 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
                                             Currently Booked
-                                            <span className="ml-2 text-sm font-normal text-zinc-500 dark:text-zinc-400">({unavailableSpaces.length})</span>
+                                            <span className="ml-2 text-sm font-normal text-zinc-500 dark:text-zinc-400">
+                                                ({unavailableSpaces.length})
+                                            </span>
                                         </h3>
                                         <div className="grid gap-6 sm:grid-cols-2">
                                             {unavailableSpaces.map((space) => (

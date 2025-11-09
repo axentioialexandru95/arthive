@@ -1,10 +1,9 @@
-import type { Curator } from '@/types';
+import ExhibitionCard from '@/components/Cards/ExhibitionCard';
 import MainLayout from '@/components/Layout/MainLayout';
 import FollowButton from '@/components/Profile/FollowButton';
-import ExhibitionCard from '@/components/Cards/ExhibitionCard';
+import type { Curator, SharedData } from '@/types';
 import { usePage } from '@inertiajs/react';
-import type { SharedData } from '@/types';
-import { MapPin, Calendar, Award } from 'lucide-react';
+import { Award, Calendar, MapPin } from 'lucide-react';
 import { useState } from 'react';
 
 interface CuratorShowProps {
@@ -57,7 +56,12 @@ export default function Show({ curator }: CuratorShowProps) {
                             </div>
 
                             {auth.user && curator.is_followed_by_auth !== null && (
-                                <FollowButton following_id={curator.id} following_type="curator" is_following={curator.is_followed_by_auth} size="lg" />
+                                <FollowButton
+                                    following_id={curator.id}
+                                    following_type="curator"
+                                    is_following={curator.is_followed_by_auth}
+                                    size="lg"
+                                />
                             )}
                         </div>
                     </div>
@@ -166,7 +170,9 @@ export default function Show({ curator }: CuratorShowProps) {
                                 {upcomingExhibitions.map((exhibition) => (
                                     <ExhibitionCard key={exhibition.id} exhibition={exhibition} />
                                 ))}
-                                {upcomingExhibitions.length === 0 && <p className="text-sm text-zinc-500 dark:text-zinc-400">No upcoming exhibitions</p>}
+                                {upcomingExhibitions.length === 0 && (
+                                    <p className="text-sm text-zinc-500 dark:text-zinc-400">No upcoming exhibitions</p>
+                                )}
                             </div>
                         )}
 

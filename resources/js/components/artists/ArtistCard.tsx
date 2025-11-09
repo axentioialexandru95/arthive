@@ -1,8 +1,8 @@
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import type { Artist } from '@/types/models';
 import { motion } from 'framer-motion';
 import { MapPin, Users } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import type { Artist } from '@/types/models';
 
 interface ArtistCardProps {
     artist: Artist;
@@ -16,12 +16,23 @@ export function ArtistCard({ artist }: ArtistCardProps) {
             <Card className="group h-full overflow-hidden border-2 transition-all hover:shadow-xl">
                 <CardHeader className="space-y-4">
                     <div className="flex items-start gap-4">
-                        <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }} className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full ring-2 ring-zinc-200 dark:ring-zinc-800">
-                            <img src={artist.user.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(artist.user.name)}&size=200`} alt={artist.user.name} className="h-full w-full object-cover" loading="lazy" />
+                        <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ duration: 0.3 }}
+                            className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full ring-2 ring-zinc-200 dark:ring-zinc-800"
+                        >
+                            <img
+                                src={artist.user.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(artist.user.name)}&size=200`}
+                                alt={artist.user.name}
+                                className="h-full w-full object-cover"
+                                loading="lazy"
+                            />
                         </motion.div>
                         <div className="flex-1 space-y-1">
                             <CardTitle className="text-xl">{artist.user.name}</CardTitle>
-                            <div className="inline-block rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-700 dark:bg-purple-900 dark:text-purple-300">{artist.specialization}</div>
+                            <div className="inline-block rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-700 dark:bg-purple-900 dark:text-purple-300">
+                                {artist.specialization}
+                            </div>
                         </div>
                     </div>
 
@@ -43,7 +54,12 @@ export function ArtistCard({ artist }: ArtistCardProps) {
                     <CardContent>
                         <div className="mb-4 grid grid-cols-2 gap-2">
                             {artworks.map((artwork) => (
-                                <motion.div key={artwork.id} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }} className="relative aspect-square overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-800">
+                                <motion.div
+                                    key={artwork.id}
+                                    whileHover={{ scale: 1.05 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="relative aspect-square overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-800"
+                                >
                                     <img src={artwork.image_path} alt={artwork.title} className="h-full w-full object-cover" loading="lazy" />
                                 </motion.div>
                             ))}

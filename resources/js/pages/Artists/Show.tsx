@@ -1,11 +1,10 @@
-import type { Artist } from '@/types';
-import MainLayout from '@/components/Layout/MainLayout';
-import FollowButton from '@/components/Profile/FollowButton';
 import ArtworkCard from '@/components/Cards/ArtworkCard';
 import ExhibitionCard from '@/components/Cards/ExhibitionCard';
+import MainLayout from '@/components/Layout/MainLayout';
+import FollowButton from '@/components/Profile/FollowButton';
+import type { Artist, SharedData } from '@/types';
 import { usePage } from '@inertiajs/react';
-import type { SharedData } from '@/types';
-import { MapPin, Calendar, Image as ImageIcon } from 'lucide-react';
+import { Calendar, Image as ImageIcon, MapPin } from 'lucide-react';
 import { useState } from 'react';
 
 interface ArtistShowProps {

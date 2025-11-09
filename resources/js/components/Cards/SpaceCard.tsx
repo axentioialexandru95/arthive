@@ -1,6 +1,6 @@
-import { useState } from "react";
-import type { Space } from "@/types";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import type { Space } from '@/types';
+import { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
 interface SpaceCardProps {
     space: Space;
@@ -27,19 +27,19 @@ export default function SpaceCard({ space }: SpaceCardProps) {
                         <>
                             <button
                                 onClick={prevImage}
-                                className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 opacity-0 transition-opacity hover:bg-white group-hover:opacity-100 dark:bg-zinc-800/80 dark:hover:bg-zinc-800"
+                                className="absolute top-1/2 left-2 -translate-y-1/2 rounded-full bg-white/80 p-2 opacity-0 transition-opacity group-hover:opacity-100 hover:bg-white dark:bg-zinc-800/80 dark:hover:bg-zinc-800"
                             >
                                 ←
                             </button>
                             <button
                                 onClick={nextImage}
-                                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 opacity-0 transition-opacity hover:bg-white group-hover:opacity-100 dark:bg-zinc-800/80 dark:hover:bg-zinc-800"
+                                className="absolute top-1/2 right-2 -translate-y-1/2 rounded-full bg-white/80 p-2 opacity-0 transition-opacity group-hover:opacity-100 hover:bg-white dark:bg-zinc-800/80 dark:hover:bg-zinc-800"
                             >
                                 →
                             </button>
                             <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-1">
                                 {images.map((_, i) => (
-                                    <div key={i} className={`h-1.5 w-1.5 rounded-full ${i === currentImage ? "bg-white" : "bg-white/50"}`} />
+                                    <div key={i} className={`h-1.5 w-1.5 rounded-full ${i === currentImage ? 'bg-white' : 'bg-white/50'}`} />
                                 ))}
                             </div>
                         </>
@@ -50,7 +50,9 @@ export default function SpaceCard({ space }: SpaceCardProps) {
                 <CardTitle className="flex items-center justify-between">
                     <span>{space.name}</span>
                     {space.available && (
-                        <span className="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-100">Available</span>
+                        <span className="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-100">
+                            Available
+                        </span>
                     )}
                 </CardTitle>
             </CardHeader>

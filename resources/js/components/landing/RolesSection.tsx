@@ -1,4 +1,4 @@
-import { Palette, Users, Building2, Eye, Check } from 'lucide-react';
+import { Building2, Check, Eye, Palette, Users } from 'lucide-react';
 
 const roles = [
     {
@@ -6,14 +6,24 @@ const roles = [
         title: 'For Artists',
         description: 'Showcase your work and connect',
         color: 'blue',
-        features: ['Create online albums with your works', 'Be discovered by curators and galleries', 'Participate in exhibitions and events', 'Build a community around your art'],
+        features: [
+            'Create online albums with your works',
+            'Be discovered by curators and galleries',
+            'Participate in exhibitions and events',
+            'Build a community around your art',
+        ],
     },
     {
         icon: Users,
         title: 'For Curators',
         description: 'Organize exhibitions with ease',
         color: 'purple',
-        features: ['Search artists by style and medium', 'Rent galleries with one click', 'Announce exhibitions and manage participants', 'Build a follower base'],
+        features: [
+            'Search artists by style and medium',
+            'Rent galleries with one click',
+            'Announce exhibitions and manage participants',
+            'Build a follower base',
+        ],
     },
     {
         icon: Building2,
@@ -27,7 +37,12 @@ const roles = [
         title: 'For Visitors',
         description: 'Discover art around you',
         color: 'green',
-        features: ['Explore exhibitions and events', 'Discover new artists and works', 'Follow favorite galleries and artists', 'Stay up to date with the art scene'],
+        features: [
+            'Explore exhibitions and events',
+            'Discover new artists and works',
+            'Follow favorite galleries and artists',
+            'Stay up to date with the art scene',
+        ],
     },
 ];
 
@@ -64,7 +79,10 @@ export function RolesSection() {
                     const colors = colorMap[role.color as keyof typeof colorMap];
 
                     return (
-                        <div key={role.title} className="flex flex-col rounded-xl border border-zinc-200 bg-white p-8 shadow-sm transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900">
+                        <div
+                            key={role.title}
+                            className="flex flex-col rounded-xl border border-zinc-200 bg-white p-8 shadow-sm transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
+                        >
                             <div className={`mb-6 flex h-16 w-16 items-center justify-center rounded-lg ${colors.icon}`}>
                                 <Icon className="h-8 w-8 text-white" strokeWidth={2} />
                             </div>
