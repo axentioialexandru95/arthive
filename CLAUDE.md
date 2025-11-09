@@ -1,3 +1,190 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project: Arthive
+
+Arthive is a modern Laravel 12 application with React 19/Inertia.js v2 frontend and Filament v4 admin panel.
+
+## Architecture Overview
+
+### Dual UI Pattern
+The application employs a dual interface architecture:
+- **Public Frontend**: Inertia.js React SPA at `/` (resources/js/pages/)
+- **Admin Panel**: Filament v4 at `/admin` (app/Filament/)
+
+Both interfaces are configured in `bootstrap/providers.php` with separate middleware stacks.
+
+### SSR Configuration
+- SSR is enabled by default (`config/inertia.php`)
+- SSR server runs on port 13714
+- Dual entry points: `resources/js/app.tsx` (client) and `resources/js/ssr.tsx` (server)
+- Use `composer run dev` for regular dev or `composer run dev:ssr` for SSR development
+
+### Type-Safe Routing with Wayfinder
+- Wayfinder generates TypeScript functions from Laravel routes
+- Generated files live in `resources/js/routes/` and `resources/js/wayfinder/`
+- Vite plugin watches route changes and auto-regenerates
+- Form variants enabled in vite.config.ts
+- Use named imports for tree-shaking: `import { show } from '@/actions/App/Http/Controllers/PostController'`
+
+### Shared Inertia Data
+The `HandleInertiaRequests` middleware shares global data with all pages:
+- `name` - App name from config
+- `quote` - Random inspiring quote
+- `auth.user` - Current authenticated user
+
+TypeScript types are defined in `resources/js/types/index.d.ts`.
+
+### Component Utility Pattern
+- `resources/js/lib/utils.ts` exports `cn()` function
+- Combines `clsx` + `tailwind-merge` for conditional className handling
+- Standard pattern for Tailwind component libraries
+
+### Tailwind v4 CSS-First Configuration
+- Configuration lives in `resources/css/app.css`, NOT a separate config file
+- Uses `@import 'tailwindcss'` (not `@tailwind` directives)
+- Scans both `resources/views` and Laravel framework views
+- Custom font: Instrument Sans (via Bunny Fonts)
+- Theme customization via `@theme { }` blocks in CSS
+
+### Laravel 12 Modern Structure
+- No separate Kernel classes - `bootstrap/app.php` handles middleware, routing, exceptions
+- `bootstrap/providers.php` for service provider registration
+- Commands auto-register from `app/Console/Commands/`
+- Health check route at `/up`
+
+### Model Conventions
+- Use `casts()` method (not `$casts` property) for attribute casting
+- Constructor property promotion for dependencies
+- PHPDoc blocks with `@use` for factory type hints
+- Factory states (e.g., `unverified()` in UserFactory)
+
+### Testing Setup (Pest v4)
+- Feature tests auto-use `RefreshDatabase` trait
+- In-memory SQLite for tests (`:memory:`)
+- Browser tests ready in `tests/Browser/`
+- Custom expectations example: `toBeOne()` in `tests/Pest.php`
+
+## Development Commands
+
+### Initial Setup
+```bash
+composer run setup  # Install deps, generate key, migrate, build frontend
+```
+
+### Development Workflow
+```bash
+# All services (server, queue, logs, vite) - color-coded output
+composer run dev
+
+# SSR development (server, queue, logs, SSR)
+composer run dev:ssr
+
+# Frontend only
+npm run dev
+npm run build
+npm run build:ssr  # Build with SSR
+```
+
+### Code Quality
+```bash
+vendor/bin/pint --dirty   # Format PHP (changed files only)
+npm run lint              # ESLint with autofix
+npm run format            # Prettier format
+npm run format:check      # Prettier check only
+npm run types             # TypeScript type check (no emit)
+```
+
+### Testing
+```bash
+composer run test                 # Run all tests
+php artisan test                  # Direct Pest runner
+php artisan test --filter=X       # Filter specific tests
+php artisan test tests/Feature/ExampleTest.php  # Run specific file
+```
+
+### Artisan Commands
+```bash
+php artisan inspire           # Custom console command example
+php artisan make:X            # Use make commands for file generation
+php artisan wayfinder:generate  # Manually regenerate routes (if Vite plugin not running)
+```
+
+## Frontend Patterns
+
+### Page Organization
+- Pages live in `resources/js/pages/`
+- Use lowercase filenames (e.g., `welcome.tsx`)
+- Export default function component
+- Use Inertia `<Head>` component for meta tags
+
+### Styling Conventions
+- Dark mode via `dark:` prefix, controlled by `<html>` class
+- Inline colors for brand consistency (from welcome.tsx)
+- Prettier allows 150-char lines to accommodate Tailwind
+- Use `gap` utilities for spacing, not margins
+
+### TypeScript
+- Path alias: `@/*` maps to `resources/js/*`
+- Strict mode enabled
+- Module resolution: "bundler"
+- No emit: TypeScript for type checking, Vite compiles
+
+### Code Quality Tools
+- **Prettier**: 4-space indent (PHP convention), 150-char width
+- **Prettier Plugins**: organize-imports, tailwindcss (sorts classes)
+- **ESLint**: Flat config (v9), React hooks rules, Prettier integration
+- **Pint**: Laravel preset (no custom config)
+
+## Database
+
+### Migrations
+- Timestamp format: `0001_01_01_000000` style prefixes
+- Default tables: users, cache, jobs (queue)
+- Database: SQLite (`database/database.sqlite`)
+
+### Factories
+- Use static password shared across instances for predictable testing
+- Prefer factory states over manual property setting
+
+## Configuration
+
+### Environment Variables
+- **CRITICAL**: Never use `env()` outside config files
+- Always access via `config('app.name')`, not `env('APP_NAME')`
+- SQLite with file-based sessions and cache
+- Queue: database-backed
+- Mail: log driver for development
+
+## Non-Obvious Patterns
+
+1. **Vite Page-Specific CSS**: App blade template includes page-specific components via:
+   ```blade
+   @vite(["resources/js/app.tsx", "resources/js/pages/{$page['component']}.tsx"])
+   ```
+
+2. **React 19 Automatic JSX**: No React imports needed (`esbuild.jsx: 'automatic'`)
+
+3. **Concurrently Dev Script**: All four services run in parallel with color-coded output
+
+4. **Class Variance Authority**: Installed but not yet used (suggests planned component variant system)
+
+5. **Wayfinder Form Support**: Can generate HTML form attributes via `.form()` method
+
+6. **Dark Mode**: Manual detection via `<html>` class, checks `$appearance ?? 'system'`
+
+7. **Bunny Fonts**: Privacy-friendly alternative to Google Fonts
+
+## MCP Server Integration
+
+Two MCP servers configured in `.mcp.json`:
+- **Laravel Boost**: PHP-based Laravel tools (`php artisan boost:mcp`)
+- **Herd**: Site management for Laravel Herd environment
+
+The application is served by Laravel Herd and available at: `https://arthive.test`
+Use `get-absolute-url` tool to generate URLs.
+
 <laravel-boost-guidelines>
 === foundation rules ===
 
@@ -383,7 +570,7 @@ Wayfinder generates TypeScript functions and types for Laravel controllers and r
 
 ### Wayfinder + Inertia
 If your application uses the `useForm` component from Inertia, you can directly submit to the wayfinder generated functions.
-    
+
 <code-snippet name="Wayfinder useForm Example" lang="typescript">
     import { store } from "@/actions/App/Http/Controllers/ExampleController";
 
