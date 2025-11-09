@@ -33,7 +33,12 @@ export default function MainLayout({ children, title }: MainLayoutProps) {
         <>
             <Head title={title} />
             <div className="min-h-screen bg-white dark:bg-zinc-950">
-                <header className="sticky top-0 z-50 border-b border-zinc-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:border-zinc-800 dark:bg-zinc-950/95 dark:supports-[backdrop-filter]:bg-zinc-950/60">
+                <motion.header
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="sticky top-0 z-50 border-b border-zinc-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:border-zinc-800 dark:bg-zinc-950/95 dark:supports-[backdrop-filter]:bg-zinc-950/60"
+                >
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="flex h-16 items-center justify-between gap-4">
                             <Link href="/" className="flex shrink-0 items-center gap-2">
@@ -65,7 +70,7 @@ export default function MainLayout({ children, title }: MainLayoutProps) {
                             <SearchBar />
                         </div>
                     </div>
-                </header>
+                </motion.header>
 
                 <main>{children}</main>
 

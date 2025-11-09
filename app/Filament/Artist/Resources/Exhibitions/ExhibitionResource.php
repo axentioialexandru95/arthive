@@ -24,7 +24,7 @@ class ExhibitionResource extends Resource
     {
         return parent::getEloquentQuery()
             ->whereHas('artists', function ($query) {
-                $query->where('artist_id', auth()->user()->artist->id);
+                $query->where('artist_id', auth()->guard('artist')->user()->id);
             });
     }
 

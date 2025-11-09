@@ -25,7 +25,7 @@ export function SearchBar() {
     const [isLoading, setIsLoading] = useState(false);
     const searchRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
-    const debounceRef = useRef<NodeJS.Timeout>();
+    const debounceRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {

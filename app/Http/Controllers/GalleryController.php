@@ -26,7 +26,9 @@ class GalleryController extends Controller
                     'avatar' => $gallery->user->avatar,
                 ],
                 'spaces_count' => $gallery->spaces_count,
-                'is_followed_by_auth' => false, // Mock for now
+                'is_followed_by_auth' => auth()->check()
+                    ? $gallery->followers()->where('follower_id', auth()->id())->exists()
+                    : null,
             ]);
 
         return Inertia::render('Galleries/Index', [
@@ -80,7 +82,9 @@ class GalleryController extends Controller
                 'rating' => $gallery->rating,
                 'followers_count' => $gallery->followers_count,
             ],
-            'is_followed_by_auth' => false, // Mock for now
+            'is_followed_by_auth' => auth()->check()
+                ? $gallery->followers()->where('follower_id', auth()->id())->exists()
+                : null,
         ];
 
         return Inertia::render('Galleries/Show', [

@@ -1,7 +1,7 @@
-import type { Artist, PaginatedData } from "@/types";
-import MainLayout from "@/Components/Layout/MainLayout";
-import ArtistCard from "@/Components/Cards/ArtistCard";
-import Pagination from "@/Components/ui/Pagination";
+import ArtistCard from '@/components/Cards/ArtistCard';
+import MainLayout from '@/components/Layout/MainLayout';
+import Pagination from '@/components/ui/Pagination';
+import type { Artist, PaginatedData } from '@/types';
 
 interface ArtistsIndexProps {
     artists: PaginatedData<Artist>;
