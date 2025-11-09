@@ -44,7 +44,7 @@ export function Header() {
                     </div>
 
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="shrink-0">
-                        <Button variant="outline" asChild size="sm" className="h-9 w-9 p-0 sm:h-auto sm:w-auto sm:px-4">
+                        <Button variant="outline" asChild className="h-9 w-9 p-0 sm:h-10 sm:w-auto sm:px-4 sm:py-2">
                             {auth.user ? (
                                 <a href={getDashboardUrl(auth.user.role)} className="flex items-center justify-center gap-2">
                                     <LayoutDashboard className="h-4 w-4" />
