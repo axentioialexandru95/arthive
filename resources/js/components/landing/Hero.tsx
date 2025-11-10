@@ -25,7 +25,7 @@ export function Hero() {
                         initial={{ backgroundPosition: '0% 50%' }}
                         animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                         transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
-                        className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-[length:200%_auto] bg-clip-text text-transparent dark:from-purple-400 dark:via-pink-400 dark:to-purple-400"
+                        className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-[length:200%_auto] bg-clip-text text-transparent"
                     >
                         artists
                     </motion.span>
@@ -34,7 +34,7 @@ export function Hero() {
                         initial={{ backgroundPosition: '0% 50%' }}
                         animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                         transition={{ duration: 5, repeat: Infinity, ease: 'linear', delay: 1 }}
-                        className="bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 bg-[length:200%_auto] bg-clip-text text-transparent dark:from-blue-400 dark:via-cyan-400 dark:to-blue-400"
+                        className="bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 bg-[length:200%_auto] bg-clip-text text-transparent"
                     >
                         curators
                     </motion.span>
@@ -43,12 +43,12 @@ export function Hero() {
                         initial={{ backgroundPosition: '0% 50%' }}
                         animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                         transition={{ duration: 5, repeat: Infinity, ease: 'linear', delay: 2 }}
-                        className="bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 bg-[length:200%_auto] bg-clip-text text-transparent dark:from-orange-400 dark:via-red-400 dark:to-orange-400"
+                        className="bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 bg-[length:200%_auto] bg-clip-text text-transparent"
                     >
                         galleries
                     </motion.span>
                 </motion.h1>
-                <motion.p variants={fadeInUp} className="mb-10 text-xl text-zinc-600 md:text-2xl dark:text-zinc-400">
+                <motion.p variants={fadeInUp} className="mb-10 text-xl text-zinc-600 md:text-2xl">
                     ArtHive is the platform that simplifies art exhibition organization. Find talent by style and medium, rent galleries with a click,
                     announce exhibitions, and build a vibrant community – all in one place.
                 </motion.p>

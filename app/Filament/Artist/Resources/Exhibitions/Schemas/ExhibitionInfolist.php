@@ -2,9 +2,9 @@
 
 namespace App\Filament\Artist\Resources\Exhibitions\Schemas;
 
-use Filament\Infolist\Components\ImageEntry;
-use Filament\Infolist\Components\Section;
-use Filament\Infolist\Components\TextEntry;
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
 class ExhibitionInfolist

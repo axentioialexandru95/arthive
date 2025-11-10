@@ -47,20 +47,20 @@ export default function Index({ results, query, type }: SearchIndexProps) {
             artist: {
                 icon: Palette,
                 label: 'Artist',
-                color: 'text-purple-600 dark:text-purple-400',
-                bg: 'bg-purple-50 dark:bg-purple-900/20',
+                color: 'text-purple-600',
+                bg: 'bg-purple-50',
             },
             curator: {
                 icon: Sparkles,
                 label: 'Curator',
-                color: 'text-blue-600 dark:text-blue-400',
-                bg: 'bg-blue-50 dark:bg-blue-900/20',
+                color: 'text-blue-600',
+                bg: 'bg-blue-50',
             },
             gallery: {
                 icon: Building2,
                 label: 'Gallery',
-                color: 'text-orange-600 dark:text-orange-400',
-                bg: 'bg-orange-50 dark:bg-orange-900/20',
+                color: 'text-orange-600',
+                bg: 'bg-orange-50',
             },
         };
         return configs[resultType as keyof typeof configs] || configs.artist;
@@ -68,13 +68,13 @@ export default function Index({ results, query, type }: SearchIndexProps) {
 
     return (
         <MainLayout title={query ? `Search results for "${query}"` : 'Search'}>
-            <div className="min-h-screen bg-white dark:bg-zinc-950">
+            <div className="min-h-screen bg-white">
                 <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                     {/* Search Header */}
                     {query && (
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }} className="mb-6">
-                            <h1 className="mb-1 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">Search results for "{query}"</h1>
-                            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                            <h1 className="mb-1 text-2xl font-semibold text-zinc-900">Search results for "{query}"</h1>
+                            <p className="text-sm text-zinc-500">
                                 {totalCount} {totalCount === 1 ? 'result' : 'results'}
                             </p>
                         </motion.div>
@@ -94,26 +94,26 @@ export default function Index({ results, query, type }: SearchIndexProps) {
                                 initial={{ opacity: 0, scale: 0.98 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.3 }}
-                                className="flex flex-col items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50/50 py-16 text-center dark:border-zinc-800 dark:bg-zinc-900/30"
+                                className="flex flex-col items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50/50 py-16 text-center"
                             >
-                                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800">
-                                    <Search className="h-8 w-8 text-zinc-400 dark:text-zinc-500" />
+                                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-zinc-100">
+                                    <Search className="h-8 w-8 text-zinc-400" />
                                 </div>
-                                <h2 className="mb-2 text-xl font-semibold text-zinc-900 dark:text-zinc-50">No results found</h2>
-                                <p className="max-w-sm text-sm text-zinc-600 dark:text-zinc-400">Try different keywords or check your spelling.</p>
+                                <h2 className="mb-2 text-xl font-semibold text-zinc-900">No results found</h2>
+                                <p className="max-w-sm text-sm text-zinc-600">Try different keywords or check your spelling.</p>
                             </motion.div>
                         ) : !query ? (
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.98 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.3 }}
-                                className="flex flex-col items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50/50 py-16 text-center dark:border-zinc-800 dark:bg-zinc-900/30"
+                                className="flex flex-col items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50/50 py-16 text-center"
                             >
-                                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30">
-                                    <Search className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+                                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-purple-100">
+                                    <Search className="h-8 w-8 text-purple-600" />
                                 </div>
-                                <h2 className="mb-2 text-xl font-semibold text-zinc-900 dark:text-zinc-50">Start Exploring</h2>
-                                <p className="max-w-sm text-sm text-zinc-600 dark:text-zinc-400">
+                                <h2 className="mb-2 text-xl font-semibold text-zinc-900">Start Exploring</h2>
+                                <p className="max-w-sm text-sm text-zinc-600">
                                     Use the search bar above to discover artists, curators, and galleries
                                 </p>
                             </motion.div>

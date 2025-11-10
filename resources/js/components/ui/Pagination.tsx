@@ -16,7 +16,7 @@ export default function Pagination({ links, meta }: PaginationProps) {
             {links.prev && (
                 <Link
                     href={links.prev}
-                    className="rounded-lg border border-zinc-200 px-3 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                    className="rounded-lg border border-zinc-200 px-3 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-100"
                 >
                     Previous
                 </Link>
@@ -34,8 +34,8 @@ export default function Pagination({ links, meta }: PaginationProps) {
                                 href={`?page=${page}`}
                                 className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                                     isActive
-                                        ? "bg-zinc-900 text-white dark:bg-zinc-50 dark:text-zinc-900"
-                                        : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                                        ? "bg-zinc-900 text-white"
+                                        : "text-zinc-700 hover:bg-zinc-100"
                                 }`}
                             >
                                 {page}
@@ -59,7 +59,7 @@ export default function Pagination({ links, meta }: PaginationProps) {
             {links.next && (
                 <Link
                     href={links.next}
-                    className="rounded-lg border border-zinc-200 px-3 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                    className="rounded-lg border border-zinc-200 px-3 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-100"
                 >
                     Next
                 </Link>

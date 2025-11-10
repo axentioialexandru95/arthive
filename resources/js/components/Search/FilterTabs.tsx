@@ -21,7 +21,7 @@ export function FilterTabs({ currentType, query }: FilterTabsProps) {
     };
 
     return (
-        <div className="border-b border-zinc-200 dark:border-zinc-800">
+        <div className="border-b border-zinc-200">
             <div className="flex gap-6 overflow-x-auto">
                 {tabs.map((tab) => (
                     <button
@@ -29,12 +29,12 @@ export function FilterTabs({ currentType, query }: FilterTabsProps) {
                         onClick={() => handleTabClick(tab.value)}
                         className={`relative px-1 py-3 text-sm font-medium whitespace-nowrap transition-colors ${
                             currentType === tab.value
-                                ? 'text-zinc-900 dark:text-zinc-50'
-                                : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100'
+                                ? 'text-zinc-900'
+                                : 'text-zinc-600 hover:text-zinc-900'
                         }`}
                     >
                         {tab.label}
-                        {currentType === tab.value && <div className="absolute right-0 bottom-0 left-0 h-0.5 bg-zinc-900 dark:bg-zinc-50" />}
+                        {currentType === tab.value && <div className="absolute right-0 bottom-0 left-0 h-0.5 bg-zinc-900" />}
                     </button>
                 ))}
             </div>

@@ -10,7 +10,7 @@ export function CTASection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="relative overflow-hidden rounded-3xl border border-zinc-200/50 bg-white/40 p-12 text-center shadow-xl backdrop-blur-xl md:p-20 dark:border-zinc-800/50 dark:bg-zinc-900/40"
+                className="relative overflow-hidden rounded-3xl border border-zinc-200/50 bg-white/40 p-12 text-center shadow-xl backdrop-blur-xl md:p-20"
             >
                 <div className="absolute -top-24 -left-24 h-48 w-48 rounded-full bg-purple-500/10 blur-3xl" />
                 <div className="absolute -right-24 -bottom-24 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
@@ -21,7 +21,7 @@ export function CTASection() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-2 text-sm font-medium text-purple-700 dark:border-purple-900 dark:bg-purple-950 dark:text-purple-300"
+                        className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-2 text-sm font-medium text-purple-700"
                     >
                         <Sparkles className="h-4 w-4" />
                         Start your art journey
@@ -42,7 +42,7 @@ export function CTASection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.3 }}
-                        className="mx-auto mb-10 max-w-2xl text-xl text-zinc-600 md:text-2xl dark:text-zinc-400"
+                        className="mx-auto mb-10 max-w-2xl text-xl text-zinc-600 md:text-2xl"
                     >
                         Join the ArtHive community and discover a new way to create, organize, and participate in art exhibitions
                     </motion.p>

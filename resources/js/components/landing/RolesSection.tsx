@@ -70,7 +70,7 @@ export function RolesSection() {
         <section className="container mx-auto px-4 py-20">
             <div className="mb-16 text-center">
                 <h2 className="mb-4 text-4xl font-bold">For The Entire Community</h2>
-                <p className="text-xl text-zinc-600 dark:text-zinc-400">Whatever your role, ArtHive offers the right tools for you</p>
+                <p className="text-xl text-zinc-600">Whatever your role, ArtHive offers the right tools for you</p>
             </div>
 
             <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -81,20 +81,20 @@ export function RolesSection() {
                     return (
                         <div
                             key={role.title}
-                            className="flex flex-col rounded-xl border border-zinc-200 bg-white p-8 shadow-sm transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
+                            className="flex flex-col rounded-xl border border-zinc-200 bg-white p-8 shadow-sm transition-shadow hover:shadow-md"
                         >
                             <div className={`mb-6 flex h-16 w-16 items-center justify-center rounded-lg ${colors.icon}`}>
                                 <Icon className="h-8 w-8 text-white" strokeWidth={2} />
                             </div>
 
                             <h3 className="mb-2 text-xl font-semibold">{role.title}</h3>
-                            <p className="mb-6 text-sm text-zinc-600 dark:text-zinc-400">{role.description}</p>
+                            <p className="mb-6 text-sm text-zinc-600">{role.description}</p>
 
                             <ul className="space-y-3">
                                 {role.features.map((feature) => (
                                     <li key={feature} className="flex items-start gap-2">
                                         <Check className={`mt-0.5 h-4 w-4 shrink-0 ${colors.text}`} strokeWidth={3} />
-                                        <span className="text-sm text-zinc-700 dark:text-zinc-300">{feature}</span>
+                                        <span className="text-sm text-zinc-700">{feature}</span>
                                     </li>
                                 ))}
                             </ul>

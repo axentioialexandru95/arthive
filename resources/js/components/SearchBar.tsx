@@ -99,9 +99,9 @@ export function SearchBar() {
 
     const getTypeBadge = (type: string) => {
         const badges = {
-            artist: 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300',
-            curator: 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300',
-            gallery: 'bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300',
+            artist: 'bg-purple-100 text-purple-700',
+            curator: 'bg-blue-100 text-blue-700',
+            gallery: 'bg-orange-100 text-orange-700',
         };
         return badges[type as keyof typeof badges] || badges.artist;
     };
@@ -117,13 +117,13 @@ export function SearchBar() {
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         placeholder="Search..."
-                        className="w-full rounded-lg border border-zinc-200 bg-white py-2 pr-10 pl-10 text-sm transition-all focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 focus:outline-none dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-purple-400"
+                        className="w-full rounded-lg border border-zinc-200 bg-white py-2 pr-10 pl-10 text-sm transition-all focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 focus:outline-none"
                     />
                     {query && (
                         <button
                             type="button"
                             onClick={handleClear}
-                            className="absolute top-1/2 right-3 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
+                            className="absolute top-1/2 right-3 -translate-y-1/2 text-zinc-400 hover:text-zinc-600"
                         >
                             <X className="h-5 w-5" />
                         </button>
@@ -132,7 +132,7 @@ export function SearchBar() {
             </form>
 
             {isOpen && results && totalResults > 0 && (
-                <div className="absolute top-full right-0 left-0 z-50 mt-2 max-h-96 overflow-y-auto rounded-lg border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-zinc-900">
+                <div className="absolute top-full right-0 left-0 z-50 mt-2 max-h-96 overflow-y-auto rounded-lg border border-zinc-200 bg-white shadow-2xl">
                     {isLoading ? (
                         <div className="p-4 text-center text-sm text-zinc-500">Loading...</div>
                     ) : (
@@ -144,7 +144,7 @@ export function SearchBar() {
                                             <button
                                                 key={`artist-${result.id}`}
                                                 onClick={() => handleResultClick(result)}
-                                                className="flex w-full items-center gap-3 rounded-lg p-2 text-left transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                                                className="flex w-full items-center gap-3 rounded-lg p-2 text-left transition-colors hover:bg-zinc-100"
                                             >
                                                 <img
                                                     src={
@@ -155,12 +155,12 @@ export function SearchBar() {
                                                 />
                                                 <div className="min-w-0 flex-1">
                                                     <div className="flex items-center gap-2">
-                                                        <p className="truncate font-medium text-zinc-900 dark:text-white">{result.name}</p>
+                                                        <p className="truncate font-medium text-zinc-900">{result.name}</p>
                                                         <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${getTypeBadge(result.type)}`}>
                                                             Artist
                                                         </span>
                                                     </div>
-                                                    <p className="truncate text-sm text-zinc-500 dark:text-zinc-400">{result.subtitle}</p>
+                                                    <p className="truncate text-sm text-zinc-500">{result.subtitle}</p>
                                                 </div>
                                             </button>
                                         ))}
@@ -173,7 +173,7 @@ export function SearchBar() {
                                             <button
                                                 key={`curator-${result.id}`}
                                                 onClick={() => handleResultClick(result)}
-                                                className="flex w-full items-center gap-3 rounded-lg p-2 text-left transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                                                className="flex w-full items-center gap-3 rounded-lg p-2 text-left transition-colors hover:bg-zinc-100"
                                             >
                                                 <img
                                                     src={
@@ -184,12 +184,12 @@ export function SearchBar() {
                                                 />
                                                 <div className="min-w-0 flex-1">
                                                     <div className="flex items-center gap-2">
-                                                        <p className="truncate font-medium text-zinc-900 dark:text-white">{result.name}</p>
+                                                        <p className="truncate font-medium text-zinc-900">{result.name}</p>
                                                         <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${getTypeBadge(result.type)}`}>
                                                             Curator
                                                         </span>
                                                     </div>
-                                                    <p className="truncate text-sm text-zinc-500 dark:text-zinc-400">{result.subtitle}</p>
+                                                    <p className="truncate text-sm text-zinc-500">{result.subtitle}</p>
                                                 </div>
                                             </button>
                                         ))}
@@ -202,7 +202,7 @@ export function SearchBar() {
                                             <button
                                                 key={`gallery-${result.id}`}
                                                 onClick={() => handleResultClick(result)}
-                                                className="flex w-full items-center gap-3 rounded-lg p-2 text-left transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                                                className="flex w-full items-center gap-3 rounded-lg p-2 text-left transition-colors hover:bg-zinc-100"
                                             >
                                                 <img
                                                     src={
@@ -213,12 +213,12 @@ export function SearchBar() {
                                                 />
                                                 <div className="min-w-0 flex-1">
                                                     <div className="flex items-center gap-2">
-                                                        <p className="truncate font-medium text-zinc-900 dark:text-white">{result.name}</p>
+                                                        <p className="truncate font-medium text-zinc-900">{result.name}</p>
                                                         <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${getTypeBadge(result.type)}`}>
                                                             Gallery
                                                         </span>
                                                     </div>
-                                                    <p className="truncate text-sm text-zinc-500 dark:text-zinc-400">{result.subtitle}</p>
+                                                    <p className="truncate text-sm text-zinc-500">{result.subtitle}</p>
                                                 </div>
                                             </button>
                                         ))}
@@ -226,10 +226,10 @@ export function SearchBar() {
                                 )}
                             </div>
 
-                            <div className="border-t border-zinc-200 dark:border-zinc-800">
+                            <div className="border-t border-zinc-200">
                                 <button
                                     onClick={() => router.visit(`/search?q=${encodeURIComponent(query)}`)}
-                                    className="w-full p-3 text-center text-sm font-medium text-purple-600 transition-colors hover:bg-zinc-50 dark:text-purple-400 dark:hover:bg-zinc-800"
+                                    className="w-full p-3 text-center text-sm font-medium text-purple-600 transition-colors hover:bg-zinc-50"
                                 >
                                     See all results ({totalResults})
                                 </button>

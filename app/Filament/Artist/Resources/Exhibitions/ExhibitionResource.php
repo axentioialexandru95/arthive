@@ -24,13 +24,13 @@ class ExhibitionResource extends Resource
     {
         return parent::getEloquentQuery()
             ->whereHas('artists', function ($query) {
-                $query->where('artist_id', auth()->guard('artist')->user()->id);
+                $query->where('artist_id', auth()->user()->artist->id);
             });
     }
 
-    public static function infolist(Schema $schema): Schema
+    public static function infolist(Schema $infolist): Schema
     {
-        return ExhibitionInfolist::configure($schema);
+        return ExhibitionInfolist::configure($infolist);
     }
 
     public static function table(Table $table): Table

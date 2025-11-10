@@ -48,7 +48,7 @@ export function Features() {
                 className="mb-16 text-center"
             >
                 <h2 className="mb-4 text-4xl font-bold">Why ArtHive?</h2>
-                <p className="text-xl text-zinc-600 dark:text-zinc-400">Everything you need for successful exhibitions</p>
+                <p className="text-xl text-zinc-600">Everything you need for successful exhibitions</p>
             </motion.div>
             <motion.div
                 initial="initial"
@@ -64,9 +64,9 @@ export function Features() {
                                 <motion.div
                                     whileHover={{ rotate: 360, scale: 1.1 }}
                                     transition={{ duration: 0.6 }}
-                                    className={`mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-${feature.color}-100 dark:bg-${feature.color}-900`}
+                                    className={`mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-${feature.color}-100`}
                                 >
-                                    <feature.icon className={`h-6 w-6 text-${feature.color}-600 dark:text-${feature.color}-400`} />
+                                    <feature.icon className={`h-6 w-6 text-${feature.color}-600`} />
                                 </motion.div>
                                 <CardTitle>{feature.title}</CardTitle>
                                 <CardDescription>{feature.description}</CardDescription>

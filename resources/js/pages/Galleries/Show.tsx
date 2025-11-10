@@ -27,18 +27,18 @@ export default function Show({ gallery }: GalleryShowProps) {
     return (
         <MainLayout title={gallery.name}>
             {/* Cover Banner */}
-            <div className="relative h-48 bg-zinc-100 md:h-64 dark:bg-zinc-900"></div>
+            <div className="relative h-48 bg-zinc-100 md:h-64"></div>
 
             {/* Profile Section */}
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="relative -mt-16 mb-8 md:-mt-20">
                     {/* Logo/Brand overlapping banner */}
                     <div className="flex flex-col gap-6 md:flex-row md:items-end">
-                        <div className="h-32 w-32 shrink-0 overflow-hidden rounded-2xl border-4 border-white bg-white shadow-xl dark:border-zinc-900 dark:bg-zinc-900">
+                        <div className="h-32 w-32 shrink-0 overflow-hidden rounded-2xl border-4 border-white bg-white shadow-xl">
                             {gallery.user.avatar ? (
                                 <img src={gallery.user.avatar} alt={gallery.name} className="h-full w-full object-cover" />
                             ) : (
-                                <div className="flex h-full w-full items-center justify-center bg-emerald-100 text-4xl font-bold text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300">
+                                <div className="flex h-full w-full items-center justify-center bg-emerald-100 text-4xl font-bold text-emerald-700">
                                     {gallery.name.charAt(0).toUpperCase()}
                                 </div>
                             )}
@@ -47,9 +47,9 @@ export default function Show({ gallery }: GalleryShowProps) {
                         {/* Name and actions */}
                         <div className="flex flex-1 flex-col gap-4 md:flex-row md:items-end md:justify-between">
                             <div>
-                                <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">{gallery.name}</h1>
+                                <h1 className="text-3xl font-bold text-zinc-900">{gallery.name}</h1>
                                 <div className="mt-2 flex flex-wrap items-center gap-3">
-                                    <span className="flex items-center gap-1 text-sm text-zinc-600 dark:text-zinc-400">
+                                    <span className="flex items-center gap-1 text-sm text-zinc-600">
                                         <MapPin className="h-4 w-4" />
                                         {gallery.location}
                                     </span>
@@ -62,9 +62,9 @@ export default function Show({ gallery }: GalleryShowProps) {
                                                 <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" style={{ clipPath: 'inset(0 50% 0 0)' }} />
                                             )}
                                             {[...Array(5 - fullStars - (hasHalfStar ? 1 : 0))].map((_, i) => (
-                                                <Star key={`empty-${i}`} className="h-4 w-4 text-zinc-300 dark:text-zinc-600" />
+                                                <Star key={`empty-${i}`} className="h-4 w-4 text-zinc-300" />
                                             ))}
-                                            <span className="ml-1 font-medium text-zinc-900 dark:text-zinc-50">{gallery.rating}</span>
+                                            <span className="ml-1 font-medium text-zinc-900">{gallery.rating}</span>
                                         </span>
                                     )}
                                 </div>
@@ -83,22 +83,22 @@ export default function Show({ gallery }: GalleryShowProps) {
 
                     {/* Stats Bar */}
                     {gallery.stats && (
-                        <div className="mt-6 flex flex-wrap gap-6 border-b border-zinc-200 pb-6 dark:border-zinc-800">
+                        <div className="mt-6 flex flex-wrap gap-6 border-b border-zinc-200 pb-6">
                             <div className="flex items-center gap-2">
-                                <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">{gallery.stats.total_spaces}</span>
-                                <span className="text-sm text-zinc-500 dark:text-zinc-400">Spaces</span>
+                                <span className="text-2xl font-bold text-zinc-900">{gallery.stats.total_spaces}</span>
+                                <span className="text-sm text-zinc-500">Spaces</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <span className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">{gallery.stats.available_spaces}</span>
-                                <span className="text-sm text-zinc-500 dark:text-zinc-400">Available</span>
+                                <span className="text-2xl font-bold text-emerald-600">{gallery.stats.available_spaces}</span>
+                                <span className="text-sm text-zinc-500">Available</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">{gallery.stats.total_exhibitions_hosted}</span>
-                                <span className="text-sm text-zinc-500 dark:text-zinc-400">Exhibitions</span>
+                                <span className="text-2xl font-bold text-zinc-900">{gallery.stats.total_exhibitions_hosted}</span>
+                                <span className="text-sm text-zinc-500">Exhibitions</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">{gallery.stats.followers_count}</span>
-                                <span className="text-sm text-zinc-500 dark:text-zinc-400">Followers</span>
+                                <span className="text-2xl font-bold text-zinc-900">{gallery.stats.followers_count}</span>
+                                <span className="text-sm text-zinc-500">Followers</span>
                             </div>
                         </div>
                     )}
@@ -110,35 +110,35 @@ export default function Show({ gallery }: GalleryShowProps) {
                     <aside className="w-full shrink-0 lg:w-80">
                         {/* About Card */}
                         {gallery.description && (
-                            <div className="mb-6 rounded-lg border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-                                <h2 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-50">About</h2>
-                                <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{gallery.description}</p>
+                            <div className="mb-6 rounded-lg border border-zinc-200 bg-white p-6 shadow-sm">
+                                <h2 className="mb-3 text-lg font-semibold text-zinc-900">About</h2>
+                                <p className="text-sm leading-relaxed text-zinc-600">{gallery.description}</p>
                             </div>
                         )}
 
                         {/* Venue Info Card */}
-                        <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-                            <h2 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-zinc-50">Venue Information</h2>
+                        <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-sm">
+                            <h2 className="mb-4 text-lg font-semibold text-zinc-900">Venue Information</h2>
                             <div className="space-y-3 text-sm">
-                                <div className="flex items-start gap-2 text-zinc-600 dark:text-zinc-400">
+                                <div className="flex items-start gap-2 text-zinc-600">
                                     <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
                                     <span>{gallery.location}</span>
                                 </div>
                                 {ratingValue > 0 && (
-                                    <div className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400">
+                                    <div className="flex items-center gap-2 text-zinc-600">
                                         <Star className="h-4 w-4" />
                                         <span>
                                             {gallery.rating} rating ({gallery.stats?.total_exhibitions_hosted || 0} exhibitions hosted)
                                         </span>
                                     </div>
                                 )}
-                                <div className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400">
+                                <div className="flex items-center gap-2 text-zinc-600">
                                     <Building2 className="h-4 w-4" />
                                     <span>
                                         {gallery.stats?.available_spaces || 0} of {gallery.stats?.total_spaces || 0} spaces available
                                     </span>
                                 </div>
-                                <div className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400">
+                                <div className="flex items-center gap-2 text-zinc-600">
                                     <Calendar className="h-4 w-4" />
                                     <span>Member since {new Date(gallery.user.created_at).getFullYear()}</span>
                                 </div>
@@ -149,14 +149,14 @@ export default function Show({ gallery }: GalleryShowProps) {
                     {/* Main Content Area */}
                     <main className="min-w-0 flex-1">
                         {/* Tabs */}
-                        <div className="mb-6 border-b border-zinc-200 dark:border-zinc-800">
+                        <div className="mb-6 border-b border-zinc-200">
                             <nav className="-mb-px flex gap-8">
                                 <button
                                     onClick={() => setActiveTab('spaces')}
                                     className={`border-b-2 pb-3 text-sm font-medium transition-colors ${
                                         activeTab === 'spaces'
-                                            ? 'border-emerald-600 text-emerald-600 dark:border-emerald-400 dark:text-emerald-400'
-                                            : 'border-transparent text-zinc-500 hover:border-zinc-300 hover:text-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-700 dark:hover:text-zinc-300'
+                                            ? 'border-emerald-600 text-emerald-600'
+                                            : 'border-transparent text-zinc-500 hover:border-zinc-300 hover:text-zinc-700'
                                     }`}
                                 >
                                     Spaces ({gallery.spaces?.length || 0})
@@ -165,8 +165,8 @@ export default function Show({ gallery }: GalleryShowProps) {
                                     onClick={() => setActiveTab('about')}
                                     className={`border-b-2 pb-3 text-sm font-medium transition-colors ${
                                         activeTab === 'about'
-                                            ? 'border-emerald-600 text-emerald-600 dark:border-emerald-400 dark:text-emerald-400'
-                                            : 'border-transparent text-zinc-500 hover:border-zinc-300 hover:text-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-700 dark:hover:text-zinc-300'
+                                            ? 'border-emerald-600 text-emerald-600'
+                                            : 'border-transparent text-zinc-500 hover:border-zinc-300 hover:text-zinc-700'
                                     }`}
                                 >
                                     About
@@ -179,9 +179,9 @@ export default function Show({ gallery }: GalleryShowProps) {
                             <div className="space-y-8">
                                 {availableSpaces.length > 0 && (
                                     <div>
-                                        <h3 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+                                        <h3 className="mb-4 text-xl font-semibold text-zinc-900">
                                             Available Spaces
-                                            <span className="ml-2 text-sm font-normal text-emerald-600 dark:text-emerald-400">
+                                            <span className="ml-2 text-sm font-normal text-emerald-600">
                                                 ({availableSpaces.length})
                                             </span>
                                         </h3>
@@ -195,9 +195,9 @@ export default function Show({ gallery }: GalleryShowProps) {
 
                                 {unavailableSpaces.length > 0 && (
                                     <div>
-                                        <h3 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+                                        <h3 className="mb-4 text-xl font-semibold text-zinc-900">
                                             Currently Booked
-                                            <span className="ml-2 text-sm font-normal text-zinc-500 dark:text-zinc-400">
+                                            <span className="ml-2 text-sm font-normal text-zinc-500">
                                                 ({unavailableSpaces.length})
                                             </span>
                                         </h3>
@@ -210,7 +210,7 @@ export default function Show({ gallery }: GalleryShowProps) {
                                 )}
 
                                 {(!gallery.spaces || gallery.spaces.length === 0) && (
-                                    <p className="text-sm text-zinc-500 dark:text-zinc-400">No spaces listed yet</p>
+                                    <p className="text-sm text-zinc-500">No spaces listed yet</p>
                                 )}
                             </div>
                         )}
@@ -220,19 +220,19 @@ export default function Show({ gallery }: GalleryShowProps) {
                                 {gallery.description ? (
                                     <>
                                         <div>
-                                            <h3 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-50">About {gallery.name}</h3>
-                                            <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">{gallery.description}</p>
+                                            <h3 className="mb-3 text-lg font-semibold text-zinc-900">About {gallery.name}</h3>
+                                            <p className="leading-relaxed text-zinc-600">{gallery.description}</p>
                                         </div>
 
                                         {gallery.user.bio && (
                                             <div>
-                                                <h3 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-50">From the Team</h3>
-                                                <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">{gallery.user.bio}</p>
+                                                <h3 className="mb-3 text-lg font-semibold text-zinc-900">From the Team</h3>
+                                                <p className="leading-relaxed text-zinc-600">{gallery.user.bio}</p>
                                             </div>
                                         )}
                                     </>
                                 ) : (
-                                    <p className="text-sm text-zinc-500 dark:text-zinc-400">No additional information available</p>
+                                    <p className="text-sm text-zinc-500">No additional information available</p>
                                 )}
                             </div>
                         )}

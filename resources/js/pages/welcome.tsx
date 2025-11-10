@@ -20,12 +20,12 @@ export default function Welcome({ artists }: WelcomeProps) {
                 <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
             </Head>
 
-            <div className="min-h-screen bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-950 dark:to-zinc-900">
+            <div className="min-h-screen bg-gradient-to-b from-zinc-50 to-white">
                 <Header />
                 <Hero />
                 <ArtistsShowcase artists={artists} />
                 <Features />
-                <div className="bg-zinc-100 py-0 dark:bg-zinc-900">
+                <div className="bg-zinc-100 py-0">
                     <RolesSection />
                 </div>
                 <CTASection />

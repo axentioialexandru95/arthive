@@ -28,15 +28,15 @@ export function Header() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="sticky top-0 z-50 border-b border-zinc-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:border-zinc-800 dark:bg-zinc-950/95 dark:supports-[backdrop-filter]:bg-zinc-950/60"
+            className="sticky top-0 z-50 border-b border-zinc-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60"
         >
             <div className="container mx-auto px-4">
                 <div className="flex h-16 items-center justify-between gap-2 sm:gap-3">
                     <Link href="/" className="flex shrink-0 items-center gap-2">
-                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-900 text-white sm:h-10 sm:w-10 dark:bg-zinc-50 dark:text-zinc-900">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-900 text-white sm:h-10 sm:w-10">
                             <Palette className="h-5 w-5 sm:h-6 sm:w-6" />
                         </div>
-                        <span className="hidden text-xl font-bold text-zinc-900 sm:inline dark:text-zinc-50">ArtHive</span>
+                        <span className="hidden text-xl font-bold text-zinc-900 sm:inline">ArtHive</span>
                     </Link>
 
                     <div className="flex-1">

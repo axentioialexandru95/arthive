@@ -37,7 +37,7 @@ export function ArtistsShowcase({ artists }: ArtistsShowcaseProps) {
                 className="mb-16 text-center"
             >
                 <h2 className="mb-4 text-4xl font-bold">Featured Artists</h2>
-                <p className="text-xl text-zinc-600 dark:text-zinc-400">Discover talented artists from our community</p>
+                <p className="text-xl text-zinc-600">Discover talented artists from our community</p>
             </motion.div>
 
             <motion.div

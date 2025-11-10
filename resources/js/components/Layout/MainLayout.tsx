@@ -32,20 +32,20 @@ export default function MainLayout({ children, title }: MainLayoutProps) {
     return (
         <>
             <Head title={title} />
-            <div className="min-h-screen bg-white dark:bg-zinc-950">
+            <div className="min-h-screen bg-white">
                 <motion.header
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="sticky top-0 z-50 border-b border-zinc-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:border-zinc-800 dark:bg-zinc-950/95 dark:supports-[backdrop-filter]:bg-zinc-950/60"
+                    className="sticky top-0 z-50 border-b border-zinc-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60"
                 >
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="flex h-16 items-center justify-between gap-2 sm:gap-3">
                             <Link href="/" className="flex shrink-0 items-center gap-2">
-                                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-900 text-white sm:h-10 sm:w-10 dark:bg-zinc-50 dark:text-zinc-900">
+                                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-900 text-white sm:h-10 sm:w-10">
                                     <Palette className="h-5 w-5 sm:h-6 sm:w-6" />
                                 </div>
-                                <span className="hidden text-xl font-bold text-zinc-900 sm:inline dark:text-zinc-50">ArtHive</span>
+                                <span className="hidden text-xl font-bold text-zinc-900 sm:inline">ArtHive</span>
                             </Link>
 
                             <div className="flex-1">
@@ -73,18 +73,18 @@ export default function MainLayout({ children, title }: MainLayoutProps) {
 
                 <main>{children}</main>
 
-                <footer className="border-t border-zinc-200 dark:border-zinc-800">
+                <footer className="border-t border-zinc-200">
                     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-                        <p className="text-center text-sm text-zinc-500 dark:text-zinc-400">
+                        <p className="text-center text-sm text-zinc-500">
                             &copy; 2025 ArtHive. All rights reserved.
                             <br />
-                            <span className="mt-2 inline-block text-sm text-zinc-500 dark:text-zinc-500">
+                            <span className="mt-2 inline-block text-sm text-zinc-500">
                                 Made by{' '}
                                 <a
                                     href="https://phantomtechind.com"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="font-medium text-purple-600 transition-colors hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
+                                    className="font-medium text-purple-600 transition-colors hover:text-purple-700"
                                 >
                                     phantomtechind.com
                                 </a>
